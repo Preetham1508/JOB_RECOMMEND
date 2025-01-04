@@ -1,0 +1,22 @@
+.property-1frame-11,
+.property-1frame-21 {
+  position: absolute;
+  top: 117px;
+  left: 1689px;
+  width: 1920px;
+  height: 267px;
+  overflow: hidden;
+}
+.property-1frame-21 {
+  top: 429px;
+  left: 1683px;
+}
+.component-2 {
+  width: 6125px;
+  border-radius: var(--br-8xs);
+  border: 1px dashed var(--color-blueviolet-300);
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 768px;
+  overflow: hidden;
+}

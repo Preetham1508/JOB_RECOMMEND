@@ -1,0 +1,143 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Login Page */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  margin-top: 7px;
+}
+
+.login-content {
+  display: flex;
+  /* width: 80%; */
+  max-width: 1000px;
+  max-height: 600px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.login-image {
+  flex: 1;
+  display: flex;
+  /* align-items: center; */
+  background-color: #f4f4f4; /* Light background color for image */
+  max-height: 100%; /* Ensure it matches the form height */
+}
+
+.login-image img {
+  width: 100%;
+  height: 100%; /* Ensure the image covers the container height */
+  object-fit: cover; /* Scale the image to cover the container */
+}
+
+.login-form {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  color: #333;
+}
+
+.login-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #ff9800; /* Orange */
+  color: #fff;
+  font-size: 1.20rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #e68900; /* Darker orange */
+}
+
+.sign-up-prompt {
+  margin-top: 1.25rem;
+  font-size: 0.90rem;
+}
+
+.sign-up-link {
+  color: #ff9800; /* Orange */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.sign-up-link:hover {
+  color: #e68900; /* Darker orange */
+}
+
+.or-divider {
+  margin: 1rem 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Google Login */
+.google-login {
+  display: flex;
+  justify-content: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}

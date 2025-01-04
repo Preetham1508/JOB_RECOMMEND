@@ -1,0 +1,121 @@
+.profile-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 25px;
+}
+  
+.profile-card {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+  
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+  
+.profile-card h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile-card h3 {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+  
+.profile-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.profile-card ul li {
+    font-size: 0.95em;
+    color: #666;
+    padding: 5px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+  
+.profile-card ul li:last-child {
+    border-bottom: none;
+}
+  
+.profile-card p {
+    font-size: 0.95em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.profile-card .skills,
+.profile-card .location {
+    margin-top: 10px;
+}
+  
+.skills p,
+.location p {
+    font-size: 0.95em;
+    color: #444;
+    padding: 5px;
+}
+  
+.location {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* Loading spinner styles */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loading-container p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+  }
+
+  .connections-container {
+    padding: 20px;
+  }
+  
+  .connections-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  

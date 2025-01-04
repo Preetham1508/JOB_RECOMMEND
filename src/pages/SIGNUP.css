@@ -1,0 +1,142 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Sign-Up Page */
+.sign-up-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height to fit viewport */
+}
+
+.sign-up-content {
+  display: flex;
+  flex-grow: 1; /* Allow the content to grow and fill the space */
+  justify-content: center;
+  align-items: center;
+  padding: 2rem; /* Adjust padding as needed */
+  margin: 5rem;
+}
+
+.sign-up-container {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem; /* Reduced padding for smaller form size */
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+.image-container {
+  flex: 1; /* Allow the image to take up remaining space */
+  margin-right: 2rem; /* Adjust margin between image and form */
+  width: 50%;
+}
+
+.sign-up-image {
+  max-width: 100%; /* Ensure image scales within its container */
+  height: 600px; /* Maintain aspect ratio */
+  display: block;
+  border-radius: 10px; /* Optional: Rounded corners for image */
+  margin-top: 50px;
+}
+
+.sign-up-form {
+  padding: 1rem;
+  width: 40%; /* Adjust width based on your design */
+}
+
+.sign-up-title {
+  font-size: 1.5rem; /* Smaller font size */
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 0.75rem; /* Reduced margin for compactness */
+  text-align: left;
+  font-size: 0.85rem; /* Smaller font size */
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem; /* Reduced padding for smaller input */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 0.95rem; /* Smaller font size */
+  color: #333;
+}
+
+.form-input:focus {
+  border-color: #ff9800; /* Orange */
+  outline: none;
+}
+
+.sign-up-button {
+  padding: 0.5rem 1.5rem; /* Reduced padding */
+  border: none;
+  border-radius: 50px;
+  background-color: #ff9800; /* Orange */
+  color: #fff;
+  font-size: 1rem; /* Smaller font size */
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 0.75rem; /* Reduced margin */
+}
+
+.sign-up-button:hover {
+  background-color: #e68900; /* Darker orange */
+}
+
+.login-prompt {
+  margin-top: 1rem; /* Reduced margin */
+  font-size: 0.85rem; /* Smaller font size */
+}
+
+.login-link {
+  color: #ff9800; /* Orange */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #e68900; /* Darker orange */
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}

@@ -1,0 +1,189 @@
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Profile Page */
+.profile-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 7rem;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.profile-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #ff9800;
+  margin-bottom: 1rem;
+}
+
+.edit-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #ff9800;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #e68900;
+}
+
+/* Profile Main */
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Profile Details */
+.profile-details {
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ff9800;
+  display: inline-block;
+  padding-bottom: 0.25rem;
+}
+
+.detail-item {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-value {
+  color: #555;
+}
+
+/* Performance Analysis */
+.profile-performance {
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.performance-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-item p {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.performance-graph {
+  width: 100%;
+  height: 200px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 1.25rem;
+}
+
+/* Education Section */
+.profile-section {
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section .section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.detail-item {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+/* Work Experience Section */
+.detail-item strong {
+  color: #333;
+}
+
+.detail-item span {
+  color: #555;
+}
+
+/* Skills Section */
+.profile-section .detail-value {
+  color: #777;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Location Section */
+.location-value {
+  font-size: 1.1rem;
+  color: #777;
+  padding: 0.5rem 0;
+}
