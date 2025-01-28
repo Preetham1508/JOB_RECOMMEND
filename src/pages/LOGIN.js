@@ -203,7 +203,7 @@ const LOGIN = () => {
             {errors.form && <p className="error-message">{errors.form}</p>}
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="mail" className="form-label">EMail</label>
+                <label htmlFor="mail" className="form-label">Email</label>
                 <input
                   type="text"
                   id="mail"

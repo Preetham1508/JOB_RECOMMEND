@@ -4,17 +4,25 @@ from flask_socketio import SocketIO
 from pymongo import MongoClient, errors
 import time
 import math
-
+from pymongo.server_api import ServerApi
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 socketio = SocketIO(app, cors_allowed_origins="*")
-uri = "mongodb://localhost:27017"
+#uri = "mongodb://localhost:27017"
+#uri="mongodb+srv://vinaysunkara:vinaysunkara@cluster0.snpbn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+# Create a new client and connect to the server
+uri = "mongodb+srv://vinaysunkara:vinaysunkara@cluster0.snpbn.mongodb.net/?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
+
 
 # MongoDB Connection
 try:
-    client = MongoClient(uri)
-    client.admin.command('ismaster')
-    print("Connected to the database successfully.")
+    #client = MongoClient(uri)
+   # client.admin.command('ismaster')
+   # print("Connected to the database successfully.")
+   client = MongoClient(uri, server_api=ServerApi('1'))
+
+   client.admin.command('ping')
+   print("Pinged your deployment. You successfully connected to MongoDB!")
 except errors.ConnectionFailure:
     print("Failed to connect to the database.")
 
