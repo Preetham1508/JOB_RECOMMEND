@@ -6,7 +6,19 @@ import time
 import math
 from pymongo.server_api import ServerApi
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+# CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+@app.before_request
+def handle_preflight():
+    if request.method == "OPTIONS":
+        response = jsonify({"message": "CORS preflight successful"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        return response
+
+
+
 socketio = SocketIO(app, cors_allowed_origins="*")
 #uri = "mongodb://localhost:27017"
 #uri="mongodb+srv://vinaysunkara:vinaysunkara@cluster0.snpbn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"

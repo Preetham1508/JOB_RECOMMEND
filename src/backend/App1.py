@@ -5,28 +5,63 @@ from pymongo import MongoClient, errors
 import google.generativeai as genai
 import time
 import json
-
+import math
+from pymongo.server_api import ServerApi
 
 app = Flask(__name__)
 # CORS(app)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-socketio = SocketIO(app, cors_allowed_origins="*")
-uri = "mongodb://localhost:27017"
-global ans
-ans = ""
+# CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+@app.before_request
+def handle_preflight():
+    if request.method == "OPTIONS":
+        response = jsonify({"message": "CORS preflight successful"})
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        return response
 
+socketio = SocketIO(app, cors_allowed_origins="*")
+#uri = "mongodb://localhost:27017"
+#uri="mongodb+srv://vinaysunkara:vinaysunkara@cluster0.snpbn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+# Create a new client and connect to the server
+uri = "mongodb+srv://vinaysunkara:vinaysunkara@cluster0.snpbn.mongodb.net/?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true"
+
+
+# MongoDB Connection
 try:
-    client = MongoClient(uri)
-    client.admin.command('ismaster')
-    print("Connected to the database successfully.")
+    #client = MongoClient(uri)
+   # client.admin.command('ismaster')
+   # print("Connected to the database successfully.")
+   client = MongoClient(uri, server_api=ServerApi('1'))
+
+   client.admin.command('ping')
+   print("Pinged your deployment. You successfully connected to MongoDB!")
 except errors.ConnectionFailure:
     print("Failed to connect to the database.")
 
 db = client['RealTimeDataAnalysis']
 users_collection = db['profiles_ind']
-recruiter_check_collection = db['checklist']
+# recruiter_check_collection = db['checklist']
 recruiter_collection = db['recruiters']
-jobs = db['companies']
+
+# socketio = SocketIO(app, cors_allowed_origins="*")
+# uri = "mongodb://localhost:27017"
+# global ans
+# ans = ""
+
+# try:
+#     client = MongoClient(uri)
+#     client.admin.command('ismaster')
+#     print("Connected to the database successfully.")
+# except errors.ConnectionFailure:
+#     print("Failed to connect to the database.")
+
+# db = client['RealTimeDataAnalysis']
+# users_collection = db['profiles_ind']
+# recruiter_check_collection = db['checklist']
+# recruiter_collection = db['recruiters']
+# jobs = db['companies']
 
 
 # @app.route('/signup', methods=['POST'])
@@ -119,7 +154,7 @@ def signup():
         'recruiter_id': recruiter_id,
     }
       
-        recruiter_check_collection.insert_one(user_data)  # Insert recruiter into Check_list
+        recruiter_collection.insert_one(user_data)  # Insert recruiter into Check_list
 
     elif role == 'user':
         # Insert user details into UsersDetails collection

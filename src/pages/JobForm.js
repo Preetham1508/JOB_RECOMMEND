@@ -23,8 +23,21 @@ const JobForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:5000/jobform', formData);
+      // await axios.post('http://127.0.0.1:5000/jobform', formData);
+      await axios.post('http://localhost:5000/jobform', formData);
       alert('Job posted successfully!');
+
+      // Reset the form fields
+    setFormData({
+      company_name: '',
+      role: '',
+      job_description: '',
+      experience_required: '',
+      job_posting_date: '',
+      application_deadline: '',
+      location: ''
+    });
+
       navigate('/jobform');
 
     } catch (error) {
