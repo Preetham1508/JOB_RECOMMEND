@@ -335,47 +335,89 @@ def get_profile():
 #         return jsonify({'error': 'An error occurred while updating the profile'})
 
 
+# @app.route('/editprofile', methods=['POST'])
+# def edprofile():
+#     data = request.get_json()
+#     email = data.get('email')
+#     update_data = data.get('data')
+#     update_data = {k: v for k, v in update_data.items() if v is not None}
+
+#     user_data = users_collection.find_one({'email': email})
+
+#     for field, value in update_data.items():
+#         if field == "photo":
+#             # Ensure photo is a Base64 string
+#             user_data['photo'] = value
+#         elif field == "education":
+#             for edu in value:
+#                 if edu['graduatedyear'] != '':
+#                     if edu not in user_data[field]:
+#                         user_data[field].append(edu)
+#         elif field == "companies":
+#             for company in value:
+#                 if company['name'] != '':
+#                     if company not in user_data[field]:
+#                         user_data[field].append(company)
+#         elif field == "skills":
+#             if value != '':
+#                 for skill in value:
+#                     if skill.lower() not in map(str.lower, user_data[field]):
+#                         user_data[field].append(skill)
+#         else:
+#             user_data[field] = value if value != '' else user_data.get(field)
+
+#     if not update_data:
+#         return jsonify({'error': 'No valid fields to update'})
+
+#     try:
+#         result = users_collection.update_one({'email': email}, {'$set': user_data})
+#         if result.modified_count == 0:
+#             return jsonify({'error': 'No profile found to update'})
+#         return jsonify({'message': 'Profile updated successfully'})
+#     except Exception as e:
+#         return jsonify({'error': f'An error occurred while updating the profile: {str(e)}'})
+
 @app.route('/editprofile', methods=['POST'])
-def edprofile():
+def edit_profile():
     data = request.get_json()
     email = data.get('email')
     update_data = data.get('data')
+
     update_data = {k: v for k, v in update_data.items() if v is not None}
+    user_data = users_collection.find_one({'email': email}) or recruiter_collection.find_one({'email': email})
 
-    user_data = users_collection.find_one({'email': email})
+    if user_data:
+        for field, value in update_data.items():
+            if field == "photo":
+                # Ensure photo is a Base64 string
+                user_data['photo'] = value
+            elif field == "education":
+                for edu in value:
+                    if edu['graduatedyear'] != '':
+                        if edu not in user_data.get('education', []):
+                            user_data.setdefault('education', []).append(edu)
+            elif field == "companies":
+                for company in value:
+                    if company['name'] != '':
+                        if company not in user_data.get('companies', []):
+                            user_data.setdefault('companies', []).append(company)
+            elif field == "skills":
+                if value != '':
+                    for skill in value:
+                        if skill.lower() not in map(str.lower, user_data.get('skills', [])):
+                            user_data.setdefault('skills', []).append(skill)
+            else:
+                user_data[field] = value
 
-    for field, value in update_data.items():
-        if field == "photo":
-            # Ensure photo is a Base64 string
-            user_data['photo'] = value
-        elif field == "education":
-            for edu in value:
-                if edu['graduatedyear'] != '':
-                    if edu not in user_data[field]:
-                        user_data[field].append(edu)
-        elif field == "companies":
-            for company in value:
-                if company['name'] != '':
-                    if company not in user_data[field]:
-                        user_data[field].append(company)
-        elif field == "skills":
-            if value != '':
-                for skill in value:
-                    if skill.lower() not in map(str.lower, user_data[field]):
-                        user_data[field].append(skill)
-        else:
-            user_data[field] = value if value != '' else user_data.get(field)
-
-    if not update_data:
-        return jsonify({'error': 'No valid fields to update'})
-
-    try:
-        result = users_collection.update_one({'email': email}, {'$set': user_data})
-        if result.modified_count == 0:
-            return jsonify({'error': 'No profile found to update'})
-        return jsonify({'message': 'Profile updated successfully'})
-    except Exception as e:
-        return jsonify({'error': f'An error occurred while updating the profile: {str(e)}'})
+        try:
+            result = users_collection.update_one({'email': email}, {'$set': user_data})
+            if result.modified_count == 0:
+                return jsonify({'error': 'No profile found to update'}), 404
+            return jsonify({'message': 'Profile updated successfully'}), 200
+        except Exception as e:
+            return jsonify({'error': f'An error occurred while updating the profile: {str(e)}'}), 500
+    else:
+        return jsonify({'error': 'User or recruiter not found'}), 404
 
 
     

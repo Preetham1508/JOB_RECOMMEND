@@ -248,7 +248,8 @@ const EditProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:5000/profile', {
+                // const response = await axios.get('http://127.0.0.1:5000/profile', 
+                const response = await axios.get('http:/localhost:5000/profile', {
                     params: { email: currentuser.email }
                 });
                 const profileData = response.data;
@@ -324,7 +325,7 @@ const EditProfile = () => {
                     return obj;
                 }, {});
 
-            await axios.post('http://127.0.0.1:5000/editprofile', {
+            await axios.post('http://localhost:5000/editprofile', {
                 email: currentuser.email,
                 data: filteredData
             });
